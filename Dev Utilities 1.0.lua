@@ -50,6 +50,19 @@ function refreshCount()
     setHighlightTextStyle(16777215, 4294967295, 10)
     regStatBox:highlight("Region No: "..tostring(regCount).."\nSwipe No: "..tostring(swipeCount).."\nSNapshots: "..tostring(snapCount))
 end
+-- Update Script --
+function UpdateScript()
+    local getNewestVersion = loadstring(httpGet("https://raw.githubusercontent.com/RoKoDerBoss/Dev_Utilities/master/Dev%20Utilities%201.0.lua"))
+    latestVersion = getNewestVersion()
+    currentVersion = dofile(localPath .."Dev Utilities 1.0.lua")
+    if currentVersion == latestVersion then
+        toast ("You are running the most current version!")
+    else
+        --httpDownload("https://raw.githubusercontent.com/Paladiex/PalPowerUp/master/version.lua", localPath .."version.lua")
+        httpDownload("https://raw.githubusercontent.com/RoKoDerBoss/Dev_Utilities/master/Dev%20Utilities%201.0.lua", localPath .."Dev Utilities 1.0.lua")
+        scriptExit("You have Updated the Script!")
+    end
+end
 -- Region Finder --
 function regionFinder()
 
@@ -271,6 +284,7 @@ function resultDialogSnap()
     dialogShowFullScreen("Results")
 end
 -- Script --
+UpdateScript()
 initialUserInterface()
 setCompareDimension()
 
